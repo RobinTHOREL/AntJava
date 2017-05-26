@@ -4,9 +4,10 @@ import Model.Simulation;
  * Created by younesdiouri on 26/05/2017.
  */
 public class Main {
-
+    public static void main(String[] args)
+    {
+        Simulation sim = new Simulation();
     /*
-    Simulation sim = new Simulation(…);
     Rendu rendu = new Rendu(…) ;
 
         while (true) {
@@ -18,6 +19,8 @@ public class Main {
             e.printStackTrace();
         }
         */
-    Simulation sim = new Simulation();
+    }
+
+
 
 }
