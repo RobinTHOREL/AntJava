@@ -7,6 +7,17 @@ import javax.swing.*;
  */
 public class Monde extends JPanel{
 
-    
+    private Case a[][] = new Case[LONG][HAUT];
+
+    public Monde()
+    {
+        for(int i=0; i<LONG; i++)
+            for(int j=0; j<HAUT; j++)
+            {
+                a[i][j] = new Case(i,j);
+            }
+    }
+
+
 
 }

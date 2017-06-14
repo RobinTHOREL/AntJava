@@ -17,7 +17,11 @@ public class Case {
     }
 
     public void addFourmi(Fourmis f) {
+
         objInCase.add(f);
+
+        
+
     }
 
     public void addPheromone(Pheromone p ){
