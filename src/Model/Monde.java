@@ -2,6 +2,9 @@ package Model;
 
 import javax.swing.*;
 
+import static Model.Settings.HAUT;
+import static Model.Settings.LONG;
+
 /**
  * Created by Kush on 26/05/2017.
  */
