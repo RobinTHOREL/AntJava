@@ -5,6 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Kush on 01/06/2017.
  */
+
 public class Case {
 
     public int x;
@@ -16,13 +17,7 @@ public class Case {
         this.y = y;
     }
 
-    public void addFourmi(Fourmis f) {
-
-        objInCase.add(f);
-
-        
-
-    }
+    public void addFourmi(Fourmis f) { objInCase.add(f); }
 
     public void addPheromone(Pheromone p ){
         objInCase.add(p);

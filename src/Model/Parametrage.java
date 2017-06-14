@@ -1,20 +1,19 @@
 package Model;
 
-import javafx.scene.layout.Pane;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 
 import static Model.Settings.*;
+import static Controller.Controlleur.*;
 
 /**
  * Created by Kush on 26/05/2017.
  */
-public class Simulation extends JFrame implements ActionListener{
+
+public class Parametrage extends JFrame implements ActionListener{
 
     //int i=3;
 
@@ -29,27 +28,27 @@ public class Simulation extends JFrame implements ActionListener{
     JButton boutonValider = new JButton("Valider les paramètres de la simulation");
     JPanel Panel = new JPanel();
     JPanel Panel1 = new JPanel();
-    public Simulation() {
+    public Parametrage() {
 
-        this.setSize(600, 300);
-        this.setTitle("Simulation");
+        this.setSize(320, 400);
+        this.setTitle("Paramètrages");
         this.setLayout(new BorderLayout());
 
-        this.getContentPane().add(Panel, BorderLayout.NORTH);
-        fourmis.setText("Nombre de fourmis :");
-        nourriture.setText("Nombre de nourritures :");
-
-        Panel.add(fourmis);
-        Panel.add(nbFourmisField);
-        nbFourmisField.setPreferredSize(new Dimension(150, 30));
-
-        Panel.add(nourriture);
-        Panel.add(nbNourritureField);
-        nbNourritureField.setPreferredSize(new Dimension(150, 30));
+        this.getContentPane().add(Panel, BorderLayout.CENTER);
 
         this.getContentPane().add(Panel1, BorderLayout.CENTER);
+        fourmis.setText("Nombre de fourmis :");
+        nourriture.setText("Nombre de nourriture :");
         hauteur.setText("Hauteur du monde :");
         largeur.setText("Largeur du monde :");
+
+        Panel1.add(fourmis);
+        Panel1.add(nbFourmisField);
+        nbFourmisField.setPreferredSize(new Dimension(150, 30));
+
+        Panel1.add(nourriture);
+        Panel1.add(nbNourritureField);
+        nbNourritureField.setPreferredSize(new Dimension(150, 30));
 
         Panel1.add(hauteur);
         Panel1.add(hauteurMonde);
@@ -63,7 +62,7 @@ public class Simulation extends JFrame implements ActionListener{
         boutonValider.addActionListener(this);
         this.getContentPane().add(boutonValider, BorderLayout.SOUTH);
 
-        this.setLocationRelativeTo(null);
+        this.setLocation(200, 100);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -75,25 +74,37 @@ public class Simulation extends JFrame implements ActionListener{
         //gere le != du int
         if(e.getSource() == boutonValider)
         {
-            int nbFourmis = Integer.parseInt(nbFourmisField.getText());
-            nbFourmisField.setText(""+nbFourmis);
+            int nbFourmis = 0, nbNourriture = 0, largeur = 0, hauteur = 0;
 
-            int nbNourriture = Integer.parseInt(nbNourritureField.getText());
-            nbNourritureField.setText(""+nbNourriture);
+            if(nbFourmisField.getText() != null) {
+                nbFourmis = Integer.parseInt(nbFourmisField.getText());
+                nbFourmisField.setText("" + nbFourmis);
+                NBFOURMIS = nbFourmis;
+            }
 
-            int largeur = Integer.parseInt(largeurMonde.getText());
-            largeurMonde.setText(""+largeur);
+            if(nbNourritureField.getText() != null) {
+                nbNourriture = Integer.parseInt(nbNourritureField.getText());
+                nbNourritureField.setText("" + nbNourriture);
+                NBNOURRITURE = nbNourriture;
+            }
 
-            int hauteur = Integer.parseInt(hauteurMonde.getText());
-            hauteurMonde.setText(""+hauteur);
+            if(largeurMonde.getText() != null) {
+                largeur = Integer.parseInt(largeurMonde.getText());
+                largeurMonde.setText("" + largeur);
+                LONG = largeur;
+            }
 
-            NBFOURMIS = nbFourmis;
-            NBNOURRITURE = nbNourriture;
-            LONG = largeur;
-            HAUT = hauteur;
+            if(hauteurMonde.getText() != null) {
+                hauteur = Integer.parseInt(hauteurMonde.getText());
+                hauteurMonde.setText("" + hauteur);
+                HAUT = hauteur;
+            }
 
             /*System.out.println("nbFourmis : " + NBFOURMIS + " \nnbNourriture : " + NBNOURRITURE + " \nlargeurMonde " +
                     LONG + " \n hauteur : " + HAUT);*/
+
+            //Lancer le monde a partir du controlleur
+           launchWorld();
         }
 
 

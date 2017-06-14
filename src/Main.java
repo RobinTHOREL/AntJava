@@ -1,4 +1,4 @@
-import Model.Simulation;
+import Model.Parametrage;
 
 /**
  * Created by younesdiouri on 26/05/2017.
@@ -6,7 +6,7 @@ import Model.Simulation;
 public class Main {
     public static void main(String[] args)
     {
-        Simulation sim = new Simulation();
+        Parametrage sim = new Parametrage();
     /*
     Rendu rendu = new Rendu(…) ;
 
