@@ -1,24 +1,32 @@
 package Model;
+import static Model.Settings.NBNOURRITURE;
+import java.lang.Math;
 
 /**
  * Created by Kush on 26/05/2017.
  */
-public class Nourriture {
-
-    int posX;
-    int posY;
-    boolean isCarried;
+public class Nourriture extends Case{
 
     public Nourriture(int x, int y) {
+        super(x,y);
+    }
 
-        this.posX = x;
-        this.posY = y;
-        isCarried = false;
+    @Override
+    public void reset() {
+        for(int i=0; i< NBNOURRITURE;i++)
+        {
+            Nourriture n = new Nourriture((int) Math.random(), (int) Math.random());
+        }
+    }
+
+    @Override
+    public void step() {
 
     }
 
-    public int getX(){ return this.posX; }
+    @Override
+    public void move() {
 
-    public int getY(){ return this.posY; }
+    }
 
 }

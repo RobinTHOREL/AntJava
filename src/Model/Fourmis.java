@@ -3,23 +3,33 @@ package Model;
 /**
  * Created by Kush on 26/05/2017.
  */
-public class Fourmis {
+public class Fourmis extends Case{
 
-    int posX;
-    int posY;
-    boolean gotFood;
+   private boolean gotFood;
 
-    public Fourmis(int x, int y) {
+    public Fourmis(int x, int y, boolean gotFood) {
 
-        this.posX = x;
-        this.posY = y;
+        super(x,y);
         gotFood = false;
+    }
+
+    public boolean isGotFood() {
+        return gotFood;
+    }
+
+    public void setGotFood(boolean gotFood) {
+        this.gotFood = gotFood;
+    }
+
+    @Override
+    public void reset() {
 
     }
 
-    public int getX(){ return this.posX; }
+    @Override
+    public void step() {
 
-    public int getY(){ return this.posY; }
+    }
 
     public void move() {
 

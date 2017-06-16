@@ -1,4 +1,4 @@
-import Model.Parametrage;
+import View.Parametrage;
 
 /**
  * Created by younesdiouri on 26/05/2017.

@@ -3,25 +3,37 @@ package Model;
 import java.util.ArrayList;
 
 /**
- * Created by Kush on 26/05/2017.
+ * Created by OG Kush on 26/05/2017.
  */
-public class Fourmilliere {
+public class Fourmilliere extends Case{
 
-    int posX;
-    int posY;
-
-    ArrayList<Fourmis> listFourmis;
-    ArrayList<Nourriture> listFood;
+    private int stock;
 
     public Fourmilliere(int x, int y) {
+        super(x,y);
+    }
 
-        this.posX = x;
-        this.posY = y;
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    @Override
+    public void reset() {
+        this.stock = 0;
+    }
+
+    @Override
+    public void step() {
 
     }
 
-    public int getX(){ return this.posX; }
+    @Override
+    public void move() {
 
-    public int getY(){ return this.posY; }
+    }
 
 }
