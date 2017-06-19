@@ -14,21 +14,30 @@ import static Model.Settings.*;
  * Created by Kush on 26/05/2017.
  */
 
-public class Parametrage extends JFrame implements ActionListener{
+public class Parametrage extends JFrame{
 
     //int i=3;
 
-    JFormattedTextField nbFourmisField = new JFormattedTextField(NumberFormat.getIntegerInstance());
-    JLabel fourmis = new JLabel();
-    JFormattedTextField nbNourritureField = new JFormattedTextField(NumberFormat.getIntegerInstance());
-    JLabel nourriture = new JLabel();
-    JFormattedTextField hauteurMonde = new JFormattedTextField(NumberFormat.getIntegerInstance());
-    JLabel hauteur = new JLabel();
-    JFormattedTextField largeurMonde = new JFormattedTextField(NumberFormat.getIntegerInstance());
-    JLabel largeur = new JLabel();
-    JButton boutonValider = new JButton("Valider les paramètres de la simulation");
-    JPanel Panel = new JPanel();
-    JPanel Panel1 = new JPanel();
+
+    private JFormattedTextField nbFourmisField = new JFormattedTextField(NumberFormat.getIntegerInstance());
+    private JLabel fourmis = new JLabel();
+    private JFormattedTextField nbNourritureField = new JFormattedTextField(NumberFormat.getIntegerInstance());
+    private JLabel nourriture = new JLabel();
+    private JFormattedTextField hauteurMonde = new JFormattedTextField(NumberFormat.getIntegerInstance());
+    private JLabel hauteur = new JLabel();
+    private JFormattedTextField largeurMonde = new JFormattedTextField(NumberFormat.getIntegerInstance());
+    private JLabel largeur = new JLabel();
+
+
+
+
+    private JButton boutonValider = new JButton("Valider les paramètres de la simulation");
+    private JPanel Panel = new JPanel();
+    private JPanel Panel1 = new JPanel();
+
+    public void addValiderListener(ActionListener listenForValiderBouton){
+        boutonValider.addActionListener(listenForValiderBouton);
+    }
     public Parametrage() {
 
         this.setSize(320, 400);
@@ -60,46 +69,50 @@ public class Parametrage extends JFrame implements ActionListener{
         largeurMonde.setPreferredSize(new Dimension(150, 30));
 
 
-        boutonValider.addActionListener(this);
+
         this.getContentPane().add(boutonValider, BorderLayout.SOUTH);
 
         this.setLocation(200, 100);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        //gere le != du int
-        if(e.getSource() == boutonValider)
-        {
-            int nbFourmis = 0, nbNourriture = 0, largeur = 0, hauteur = 0;
+    public JButton getBoutonValider() {
+        return boutonValider;
+    }
+    public int getNbFourmisField() {
+        return Integer.parseInt(nbFourmisField.getText());
+    }
 
-            if(nbFourmisField.getText() != null) {
-                nbFourmis = Integer.parseInt(nbFourmisField.getText());
-                nbFourmisField.setText("" + nbFourmis);
-                NBFOURMIS = nbFourmis;
-            }
+    public void setNbFourmisField(int nb) {
+        nbFourmisField.setText(Integer.toString(nb));
+    }
 
-            if(nbNourritureField.getText() != null) {
-                nbNourriture = Integer.parseInt(nbNourritureField.getText());
-                nbNourritureField.setText("" + nbNourriture);
-                NBNOURRITURE = nbNourriture;
-            }
+    public int getNbNourritureField() {
+        return Integer.parseInt(nbNourritureField.getText());
+    }
 
-            if(largeurMonde.getText() != null) {
-                largeur = Integer.parseInt(largeurMonde.getText());
-                largeurMonde.setText("" + largeur);
-                LONG = largeur;
-            }
+    public void setNbNourritureField(int nb) {
+        nbNourritureField.setText(Integer.toString(nb));
+    }
 
-            if(hauteurMonde.getText() != null) {
-                hauteur = Integer.parseInt(hauteurMonde.getText());
-                hauteurMonde.setText("" + hauteur);
-                HAUT = hauteur;
-            }
+    public int getLargeurMonde()
+    {
+        return Integer.parseInt(largeurMonde.getText());
+    }
+    public void setLargeurMonde(int nb)
+    {
+        largeurMonde.setText(Integer.toString(nb));
+    }
+    public int getHauteurMonde()
+    {
+        return Integer.parseInt(hauteurMonde.getText());
+    }
+    public void setHauteurMonde(int nb)
+    {
+        hauteurMonde.setText(Integer.toString(nb));
+    }
 
             /*System.out.println("nbFourmis : " + NBFOURMIS + " \nnbNourriture : " + NBNOURRITURE + " \nlargeurMonde " +
                     LONG + " \n hauteur : " + HAUT);*/
@@ -107,10 +120,5 @@ public class Parametrage extends JFrame implements ActionListener{
             //Lancer le monde a partir du controlleur
 //           launchWorld();
 
-                Monde m = new Monde();
         }
 
-
-
-    }
-}

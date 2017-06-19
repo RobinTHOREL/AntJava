@@ -13,7 +13,6 @@ import static Model.Settings.LONG;
 
 public class Monde extends JPanel {
 
-    private Case a[][] = new Case[LONG][HAUT];
     JPanel Panel = new JPanel();
     JFrame frame = new JFrame();
 
@@ -23,11 +22,11 @@ public class Monde extends JPanel {
         frame.setTitle("Monde - Simulation");
         frame.setLayout(new BorderLayout());
 
-        for(int i=0; i<LONG; i++)
-            for(int j=0; j<HAUT; j++){
-                System.out.println(i + j);
-                a[i][j] = new Case(i,j);
-            }
+//        for(int i=0; i<LONG; i++)
+//            for(int j=0; j<HAUT; j++){
+//                System.out.println(i + j);
+//                a[i][j] = new Case(i,j);
+//            }
 
         //frame.setLocationRelativeTo(null);
         frame.setLocation(550, 100);

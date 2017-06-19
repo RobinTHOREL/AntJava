@@ -34,4 +34,8 @@ public class Fourmis extends Case{
     public void move() {
 
     }
+    public String getPosition()
+    {
+        return "("+getX()+","+getY()+")";
+    }
 }

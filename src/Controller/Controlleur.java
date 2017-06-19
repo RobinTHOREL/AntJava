@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Case;
 import Model.Fourmilliere;
 import Model.Nourriture;
 import View.Monde;
@@ -14,10 +15,25 @@ import static Model.Settings.NBNOURRITURE;
  * Created by Kush on 26/05/2017.
  */
 public class Controlleur {
+    int x,y;
+    Case cases = new Case(x,y) {
+        @Override
+        public void reset() {
 
-    public void launchWorld() {
-        Monde m = new Monde();
-    }
+        }
+
+        @Override
+        public void step() {
+
+        }
+
+        @Override
+        public void move() {
+
+        }
+    };
+//        Monde m = new Monde();
+
     public void addRandomFood() {
         for(int i = 0; i < NBNOURRITURE; i++){
             Nourriture n = new Nourriture(i/LONG, (i/HAUT)*2);

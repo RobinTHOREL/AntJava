@@ -1,3 +1,4 @@
+import Controller.ControlleurLauncher;
 import View.Parametrage;
 
 /**
@@ -6,7 +7,9 @@ import View.Parametrage;
 public class Main {
     public static void main(String[] args)
     {
-        Parametrage sim = new Parametrage();
+        Parametrage theView = new Parametrage();
+        ControlleurLauncher launch = new ControlleurLauncher(theView);
+        theView.setVisible(true);
     /*
     Rendu rendu = new Rendu(…) ;
 
