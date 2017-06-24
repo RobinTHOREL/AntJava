@@ -17,21 +17,17 @@ public class Controlleur {
     private Nourriture nourriture;
     private Monde monde;
 
-    public Controlleur(Fourmilliere fourmilliere, Fourmis fourmis, Pheromone pheromone,
-                       Nourriture nourriture, Monde monde)
+    public Controlleur(Monde monde)
     {
-        this.fourmilliere = fourmilliere;
-         this.fourmis = fourmis;
-         this.pheromone = pheromone;
-         this.nourriture = nourriture;
          this.monde = monde;
 
     }
-//    public void addFourmis() {
-//        for(int i = 0; i < NBFOURMIS; i++){
-//            new Fourmis(X_START, Y_START, false);
-//        }
-//    }
+    public void watchFourmis() {
+        for(Fourmis fourmi : monde.getFourmisList())
+        {
+            System.out.println("fourmi n° :"+ monde.getFourmisList().indexOf(fourmi));
+        }
+    }
 //    public void addRandomFood() {
 //        for(int i = 0; i < NBNOURRITURE; i++){
 //            Nourriture n = new Nourriture((int)Math.random()*(HAUT-X_START),

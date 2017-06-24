@@ -110,8 +110,5 @@ public class Parametrage extends JFrame{
         hauteurMonde.setText(Integer.toString(nb));
     }
 
-            /*System.out.println("nbFourmis : " + NBFOURMIS + " \nnbNourriture : " + NBNOURRITURE + " \nlargeurMonde " +
-                    LONG + " \n hauteur : " + HAUT);*/
-
         }
 

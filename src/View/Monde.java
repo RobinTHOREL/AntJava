@@ -18,6 +18,7 @@ import static Model.Settings.LARGEUR_FOURMILLIERE;
 
 public class Monde extends JPanel {
 
+
     private ArrayList<Fourmis> fourmisList = new ArrayList<Fourmis>();
     private ArrayList<Nourriture> foodList = new ArrayList<Nourriture>();
     private Fourmilliere fourmilliere;
@@ -63,6 +64,21 @@ public class Monde extends JPanel {
         for (Nourriture food : foodList) {
             food.nextStep(g);
         }
+    }
+    public ArrayList<Fourmis> getFourmisList() {
+        return fourmisList;
+    }
+
+    public void setFourmisList(ArrayList<Fourmis> fourmisList) {
+        this.fourmisList = fourmisList;
+    }
+
+    public ArrayList<Nourriture> getFoodList() {
+        return foodList;
+    }
+
+    public void setFoodList(ArrayList<Nourriture> foodList) {
+        this.foodList = foodList;
     }
 }
 

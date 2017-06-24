@@ -32,7 +32,6 @@ public class Fourmis extends Case{
 
     @Override
     public void nextStep(Graphics g) {
-        //image.paintIcon(panel, g, x, y); - commented out because I don't have an ImageIcon
         g.setColor(Color.black);
         g.drawOval(10, 10, 8, 8);
         System.out.println("ant created");

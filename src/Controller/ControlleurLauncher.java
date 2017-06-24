@@ -58,6 +58,8 @@ public class ControlleurLauncher extends JPanel{
             if(firstTry)
             {
                 Monde m = new Monde();
+                Controlleur c = new Controlleur(m);
+                c.watchFourmis();
                 firstTry = false;
             }
             else
