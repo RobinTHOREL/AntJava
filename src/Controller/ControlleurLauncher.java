@@ -57,16 +57,14 @@ public class ControlleurLauncher extends JPanel{
             }
             if(firstTry)
             {
-                Monde m = new Monde();
-                Controlleur c = new Controlleur(m);
-                c.watchFourmis();
-                firstTry = false;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        new Controlleur();
+                        firstTry = false;
+                    }
+                }).start();
             }
-            else
-            {
-                repaint();
-            }
-
         }
 
     }

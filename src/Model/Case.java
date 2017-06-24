@@ -12,9 +12,13 @@ import java.util.ArrayList;
  */
 public abstract class Case implements Observable {
     protected Point position;
+    protected JPanel vue;
+
+
 
     public Case(Point position){
         this.position = position;
+        this.vue = new JPanel();
     }
     public Point getPosition(){
         return new Point(this.position);
@@ -26,7 +30,7 @@ public abstract class Case implements Observable {
 
     private ArrayList<Observer> listObserver = new ArrayList<Observer>();
     //Efface
-    public abstract void reset();
+    public abstract void reset(Graphics g);
 
     //Step method
     public abstract void nextStep(Graphics g);
@@ -48,5 +52,11 @@ public abstract class Case implements Observable {
     public void removeObserver() {
         listObserver = new ArrayList<Observer>();
     }
-}
+    public JPanel getVue() {
+        return vue;
+    }
+
+    public void setVue(JPanel vue) {
+        this.vue = vue;
+    }}
 

@@ -17,7 +17,7 @@ public class Settings {
     //Settings fourmiliere
     public static int NBFOURMIS = 10;
     public static int NBNOURRITURE = 10;
-    public static int LARGEUR_FOURMILLIERE = 20;
+    public static int LARGEUR_FOURMILLIERE = 40;
 
     // Duree de vie d une pheromone
     public static final int DUREE_VIE_PHERO = 50;

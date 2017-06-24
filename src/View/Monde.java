@@ -1,6 +1,8 @@
 package View;
+import Controller.Controlleur;
 import Model.Fourmilliere;
 import Model.Fourmis;
+import Model.Model;
 import Model.Nourriture;
 
 import javax.swing.*;
@@ -16,69 +18,51 @@ import static Model.Settings.LARGEUR_FOURMILLIERE;
  * Created by Kush on 26/05/2017.
  */
 
-public class Monde extends JPanel {
-
-
-    private ArrayList<Fourmis> fourmisList = new ArrayList<Fourmis>();
-    private ArrayList<Nourriture> foodList = new ArrayList<Nourriture>();
-    private Fourmilliere fourmilliere;
-
-    JPanel Panel = new JPanel();
-    JFrame frame = new JFrame();
+public class Monde extends JFrame {
+    private Controlleur controlleur;
 
     public Monde() {
-        for(int i=0;i<NBFOURMIS;i++)
-        {
-            fourmisList.add(new Fourmis(new Point(10,10),false));
-        }
-        for(int i=0;i<NBNOURRITURE;i++)
-        {
-            foodList.add(new Nourriture(new Point(10,10)));
-        }
-        frame.setSize(LONG, HAUT);
-        frame.setTitle("Monde - Simulation");
-        frame.setLayout(new BorderLayout());
 
-//        for(int i=0; i<LONG; i++)
-//            for(int j=0; j<HAUT; j++){
-//                System.out.println(i + j);
-//                a[i][j] = new Case(i,j);
-//            }
 
-        //frame.setLocationRelativeTo(null);
-        frame.setLocation(550, 100);
+        this.setSize(LONG, HAUT);
+        this.setTitle("Monde - Simulation");
+        this.setLayout(new BorderLayout());
+
+        this.setLocation(550, 100);
 //        frame.add(this);
-       frame.getContentPane().add(this);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        repaint();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
+
     }
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setColor(Color.GREEN);
-        g.fillRect(X_START, Y_START, LARGEUR_FOURMILLIERE, LARGEUR_FOURMILLIERE);
-        System.out.println("ok");
+
+    public void init(Model model) {
+      this.initFourmis(model.getFourmisList());
+      this.initNourriture(model.getFoodList());
+      this.initFourmilliere(model.getFourmilliere());
+        this.revalidate();
+        this.repaint();
+    }
+    public void paint(Model model){
+        this.repaint();
+    }
+    private void initFourmis(ArrayList<Fourmis> fourmisList) {
         for (Fourmis fourmis : fourmisList) {
-            fourmis.nextStep(g);
-        }
-        for (Nourriture food : foodList) {
-            food.nextStep(g);
+            JPanel vue = fourmis.getVue();
+            this.add(vue);
         }
     }
-    public ArrayList<Fourmis> getFourmisList() {
-        return fourmisList;
+    private void initNourriture(ArrayList<Nourriture> foodList) {
+        for (Nourriture nourriture : foodList) {
+            System.out.println(nourriture.getPosition());
+            JPanel vue = nourriture.getVue();
+            this.add(vue);
+        }
+    }
+    private void initFourmilliere(Fourmilliere fourmilliere)
+    {
+        JPanel vue = fourmilliere.getVue();
+        this.add(vue);
     }
 
-    public void setFourmisList(ArrayList<Fourmis> fourmisList) {
-        this.fourmisList = fourmisList;
-    }
-
-    public ArrayList<Nourriture> getFoodList() {
-        return foodList;
-    }
-
-    public void setFoodList(ArrayList<Nourriture> foodList) {
-        this.foodList = foodList;
-    }
 }
 

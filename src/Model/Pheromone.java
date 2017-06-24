@@ -20,7 +20,7 @@ public class Pheromone  extends Case{
     public int getY(){ return this.posY; }
 
     @Override
-    public void reset() {
+    public void reset(Graphics g) {
 
     }
 

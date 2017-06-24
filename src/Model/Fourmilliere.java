@@ -1,4 +1,5 @@
 package Model;
+import View.FourmilliereVue;
 import com.antjava.observer.Observable;
 
 import java.awt.*;
@@ -13,6 +14,7 @@ public class Fourmilliere extends Case{
 
     public Fourmilliere(Point position) {
         super(position);
+        this.vue = new FourmilliereVue(this);
     }
 
     public int getStock() {
@@ -24,7 +26,7 @@ public class Fourmilliere extends Case{
     }
 
     @Override
-    public void reset() {
+    public void reset(Graphics g) {
         this.stock = 0;
     }
 

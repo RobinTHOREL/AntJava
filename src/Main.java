@@ -10,18 +10,8 @@ public class Main {
         Parametrage theView = new Parametrage();
         ControlleurLauncher launch = new ControlleurLauncher(theView);
         theView.setVisible(true);
-    /*
-    Rendu rendu = new Rendu(…) ;
 
-        while (true) {
-        sim.nextStep();
-        rendu.paint(sim);
-        try {
-            Thread.sleep(SleepDuration);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        */
+
     }
 
 
