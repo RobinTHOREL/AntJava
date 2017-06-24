@@ -3,29 +3,25 @@ package Model;
 import com.antjava.observer.Observable;
 
 import com.antjava.observer.Observer;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 /**
  * Created by younesdiouri on 16/06/2017.
  */
 public abstract class Case implements Observable {
-    public int x;
-    public int y;
+    protected Point position;
 
-    public Case(int x, int y){
-        this.x = x;
-        this.y = y;
+    public Case(Point position){
+        this.position = position;
     }
-    public int getX() {
-        return x;
+    public Point getPosition(){
+        return new Point(this.position);
     }
-    public void setX(int x) {
-        this.x = x;
-    }
-    public int getY() {
-        return y;
-    }
-    public void setY(int y) {
-        this.y = y;
+
+    public void setPosition(Point position){
+        this.position = position;
     }
 
     private ArrayList<Observer> listObserver = new ArrayList<Observer>();
@@ -33,7 +29,7 @@ public abstract class Case implements Observable {
     public abstract void reset();
 
     //Step method
-    public abstract void step();
+    public abstract void nextStep(Graphics g);
 
     //Affichage forcé du résultat
     public abstract void move();
@@ -44,7 +40,7 @@ public abstract class Case implements Observable {
     }
 
     public void notifyObserver() {
-
+        System.out.println("observer notified.");
         for(Observer obs : listObserver)
             obs.update();
     }

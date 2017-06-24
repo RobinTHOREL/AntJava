@@ -1,14 +1,10 @@
 package View;
 
-import View.Monde;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 
-import static Model.Settings.*;
 
 /**
  * Created by Kush on 26/05/2017.
@@ -116,9 +112,6 @@ public class Parametrage extends JFrame{
 
             /*System.out.println("nbFourmis : " + NBFOURMIS + " \nnbNourriture : " + NBNOURRITURE + " \nlargeurMonde " +
                     LONG + " \n hauteur : " + HAUT);*/
-
-            //Lancer le monde a partir du controlleur
-//           launchWorld();
 
         }
 

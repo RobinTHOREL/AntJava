@@ -8,13 +8,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Model.Settings.*;
+import javax.swing.*;
 
 /**
  * Created by younesdiouri on 19/06/2017.
  */
-public class ControlleurLauncher {
+public class ControlleurLauncher extends JPanel{
 
     private Parametrage theView;
+    private boolean firstTry = true;
 
     public ControlleurLauncher(Parametrage theView)
     {
@@ -53,7 +55,16 @@ public class ControlleurLauncher {
                 theView.setHauteurMonde(hauteur);
                 HAUT = hauteur;
             }
-//            Monde m = new Monde();
+            if(firstTry)
+            {
+                Monde m = new Monde();
+                firstTry = false;
+            }
+            else
+            {
+                repaint();
+            }
+
         }
 
     }

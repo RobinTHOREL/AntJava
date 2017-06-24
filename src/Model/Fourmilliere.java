@@ -1,5 +1,7 @@
 package Model;
+import com.antjava.observer.Observable;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -9,8 +11,8 @@ public class Fourmilliere extends Case{
 
     private int stock;
 
-    public Fourmilliere(int x, int y) {
-        super(x,y);
+    public Fourmilliere(Point position) {
+        super(position);
     }
 
     public int getStock() {
@@ -27,13 +29,15 @@ public class Fourmilliere extends Case{
     }
 
     @Override
-    public void step() {
-
+    public void nextStep(Graphics g) {
+        notifyObserver();
     }
 
     @Override
     public void move() {
 
     }
+
+
 
 }
