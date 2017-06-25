@@ -30,7 +30,7 @@ public class ControlleurLauncher extends JPanel{
         public void actionPerformed(ActionEvent e)
         {
             //gere le != du int
-            int nbFourmis = 0, nbNourriture = 0, largeur = 0, hauteur = 0;
+            int nbFourmis = NBFOURMIS, nbNourriture = NBNOURRITURE, largeur = LONG, hauteur = HAUT;
 
             if(theView.getNbFourmisField() != 0) {
                 nbFourmis = theView.getNbFourmisField();

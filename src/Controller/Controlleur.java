@@ -3,6 +3,8 @@ package Controller;
 import Model.*;
 import View.Monde;
 
+import static Model.Settings.DELAY;
+
 /**
  * Created by Kush on 26/05/2017.
  */
@@ -24,7 +26,7 @@ public class Controlleur {
             monde.paint(model);
 
             try {
-                Thread.sleep(3);
+                Thread.sleep(DELAY);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -6,6 +6,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static Model.Settings.HAUT;
+import static Model.Settings.LONG;
+
 /**
  * Created by Kush on 26/05/2017.
  */
@@ -92,8 +95,10 @@ public class Fourmis extends Case{
         point.x += move.x;
         point.y += move.y;
 
+        if((point.x < HAUT && point.x > 10) && (point.y < LONG && point.y > 10))
+            this.setPosition(point);
 
-        this.setPosition(point);
+        System.out.println(point.x + ", "+ point.y);
     }
 
 }
