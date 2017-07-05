@@ -17,11 +17,21 @@ public class NourritureVue extends JPanel{
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics graph) {
         this.setLocation(nourriture.getPosition());
 
-        g.setColor(Color.black);
-        g.fillRect(0, 0, COTE, COTE);
+
+        if(nourriture.getNb() != 0)
+        {
+            graph.setColor(Color.black);
+            graph.fillRect(0, 0, COTE, COTE);
+
+        }
+        else{
+//            System.out.println("PLUS DE FOOD");
+            graph.setColor(Color.white);
+            graph.fillRect(0,0,0,0);
+        }
 //        System.out.println("Nourriture");
 
     }

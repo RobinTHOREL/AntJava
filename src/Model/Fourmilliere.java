@@ -32,7 +32,6 @@ public class Fourmilliere extends Case{
 
     @Override
     public void nextStep(Graphics g) {
-        notifyObserver();
     }
 
     @Override

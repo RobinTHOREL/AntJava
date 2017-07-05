@@ -4,6 +4,7 @@ import Model.Fourmilliere;
 import Model.Fourmis;
 import Model.Model;
 import Model.Nourriture;
+import com.antjava.observer.*;
 
 import javax.swing.*;
 
@@ -19,7 +20,7 @@ import static Model.Settings.LARGEUR_FOURMILLIERE;
  * Created by Kush on 26/05/2017.
  */
 
-public class Monde extends JFrame {
+public class Monde extends JFrame implements Observer{
     private Controlleur controlleur;
 
     public Monde() {
@@ -28,7 +29,6 @@ public class Monde extends JFrame {
         this.setSize(LONG, HAUT);
         this.setTitle("Monde - Simulation");
         this.setLayout(new BorderLayout());
-
         this.setLocation(550, 100);
 //        frame.add(this);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,10 +37,15 @@ public class Monde extends JFrame {
     }
 
     public void init(Model model) {
-      this.initFourmis(model.getFourmisList());
+        model.addObserver(this);
+        this.initFourmis(model.getFourmisList());
       this.initNourriture(model.getFoodList());
       this.initFourmilliere(model.getFourmilliere());
         this.revalidate();
+        this.repaint();
+    }
+    public void update(Observable o, Object arg) {
+        System.out.println("update");
         this.repaint();
     }
     public void paint(Model model){
@@ -63,6 +68,13 @@ public class Monde extends JFrame {
     {
         JPanel vue = fourmilliere.getVue();
         this.add(vue);
+    }
+
+    @Override
+    public void update() {
+        System.out.println("update!");
+        repaint();
+
     }
 
 }

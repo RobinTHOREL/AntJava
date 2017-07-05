@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by younesdiouri on 16/06/2017.
  */
-public abstract class Case implements Observable {
+public abstract class Case {
     protected Point position;
     protected JPanel vue;
 
@@ -43,15 +43,15 @@ public abstract class Case implements Observable {
         this.listObserver.add(obs);
     }
 
-    public void notifyObserver() {
-        System.out.println("observer notified.");
-        for(Observer obs : listObserver)
-            obs.update();
-    }
+//    public void notifyObserver() {
+//        System.out.println("observer notified.");
+//        for(Observer obs : listObserver)
+//            obs.update();
+//    }
 
-    public void removeObserver() {
-        listObserver = new ArrayList<Observer>();
-    }
+//    public void removeObserver() {
+//        listObserver = new ArrayList<Observer>();
+//    }
     public JPanel getVue() {
         return vue;
     }

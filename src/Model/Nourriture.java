@@ -12,10 +12,20 @@ import static Model.Settings.*;
  * Created by Kush on 26/05/2017.
  */
 public class Nourriture extends Case{
+    public int nb;
+
+    public int getNb() {
+        return nb;
+    }
+
+    public void setNb(int nb) {
+        this.nb = nb;
+    }
 
     public Nourriture(Point position) {
         super(position);
         this.vue = new NourritureVue(this);
+        this.nb = nb;
     }
 
     @Override
