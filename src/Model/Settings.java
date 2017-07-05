@@ -10,7 +10,7 @@ public class Settings {
     public static int LONG = 800;
     public static int HAUT = 600;
     // temps en ms du pas de la simulation
-    public static final int DELAY = 10;
+    public static final int DELAY = 3;
     // Longueur et largeur de chaque element (plante, pheromone ...)
     public static final int COTE = 10;
 

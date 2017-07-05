@@ -3,6 +3,8 @@ import Model.Nourriture;
 import javax.swing.*;
 import java.awt.*;
 
+import static Model.Settings.COTE;
+
 public class NourritureVue extends JPanel{
 
     private Nourriture nourriture;
@@ -10,7 +12,7 @@ public class NourritureVue extends JPanel{
     public NourritureVue(Nourriture nourriture){
         this.nourriture = nourriture;
 
-        this.setSize(20, 20);
+        this.setSize(COTE, COTE);
         this.setLocation(nourriture.getPosition());
     }
 
@@ -19,8 +21,8 @@ public class NourritureVue extends JPanel{
         this.setLocation(nourriture.getPosition());
 
         g.setColor(Color.black);
-        g.fillRect(0, 0, 20, 20);
-        System.out.println("Nourriture");
+        g.fillRect(0, 0, COTE, COTE);
+//        System.out.println("Nourriture");
 
     }
 }

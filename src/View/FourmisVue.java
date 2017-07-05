@@ -20,7 +20,7 @@ public class FourmisVue extends JPanel{
 
         g.setColor(Color.black);
         g.drawOval(10, 10, 8, 8);
-        System.out.println("Fourmis");
+//        System.out.println("Fourmis");
 
     }
 }

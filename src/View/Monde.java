@@ -9,6 +9,7 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static Model.Settings.*;
 import static Model.Settings.LARGEUR_FOURMILLIERE;
@@ -51,9 +52,9 @@ public class Monde extends JFrame {
             this.add(vue);
         }
     }
-    private void initNourriture(ArrayList<Nourriture> foodList) {
-        for (Nourriture nourriture : foodList) {
-            System.out.println(nourriture.getPosition());
+    private void initNourriture(HashMap<Point, Nourriture> foodList) {
+        for (Point position: foodList.keySet()) {
+            Nourriture nourriture = foodList.get(position);
             JPanel vue = nourriture.getVue();
             this.add(vue);
         }
