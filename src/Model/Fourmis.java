@@ -3,7 +3,6 @@ package Model;
 import View.FourmisVue;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Random;
 
 import static Model.Settings.*;
@@ -71,6 +70,8 @@ public class Fourmis extends Case {
             move.x = home.x - fourmi.x;
             move.y = home.y - fourmi.y;
 
+            int random  = 1 + (int)(Math.random() * 6);
+
             if(move.x > 0) {
                 move.x = 1;
             }else if(move.x < 0){
@@ -82,6 +83,9 @@ public class Fourmis extends Case {
             }else if(move.y < 0){
                 move.y = -1;
             }
+
+            if(random == 1)
+                new Pheromone(fourmi.getLocation());
 
             fourmi.x += move.x;
             fourmi.y += move.y;

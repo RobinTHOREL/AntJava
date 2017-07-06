@@ -1,23 +1,30 @@
 package Model;
+import View.PheromoneVue;
+import com.antjava.observer.Observer;
 
 import java.awt.*;
+
+import static Model.Settings.*;
 
 /**
  * Created by Kush on 26/05/2017.
  */
-public class Pheromone  extends Case{
+public class Pheromone extends Case{
+    public int nb;
 
-    int posX;
-    int posY;
-
-    public Pheromone(Point position) {
-    super(position);
-
+    public int getNb() {
+        return nb;
     }
 
-    public int getX(){ return this.posX; }
+    public void setNb(int nb) {
+        this.nb = nb;
+    }
 
-    public int getY(){ return this.posY; }
+    public Pheromone (Point position) {
+        super(position);
+        this.vue = new PheromoneVue(this);
+        this.nb = nb;
+    }
 
     @Override
     public void reset(Graphics g) {
@@ -32,6 +39,10 @@ public class Pheromone  extends Case{
     @Override
     public void move() {
 
+    }
+
+    public void notifyObserver() {
+        System.out.println("observer notified.");
     }
 
 }
