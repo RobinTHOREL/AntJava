@@ -6,8 +6,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static Model.Settings.HAUT;
-import static Model.Settings.LONG;
+import static Model.Settings.*;
 
 /**
  * Created by Kush on 26/05/2017.
@@ -15,7 +14,6 @@ import static Model.Settings.LONG;
 public class Fourmis extends Case {
 
     private boolean gotFood;
-
 
     public Fourmis(Point position, boolean gotFood) {
         super(position);
@@ -48,70 +46,111 @@ public class Fourmis extends Case {
 
     }
 
-    public void explore() {
-        int direction = new Random().nextInt(8);
+    public void explore(Fourmilliere fourmilliere) {
+
+        if (this.gotFood) {
+
+            Point home = fourmilliere.getPosition();
+            Point fourmi = this.getPosition();
+            Point move = new Point(0,0);
+
+            if (this.isHome(fourmilliere)) {
+                this.setGotFood(false);
+                //permet de relancer les fourmis en chasse
+                fourmi.x = 45;
+                fourmi.y = 45;
+
+                this.setPosition(fourmi);
+
+                NBFOODFOURMIL++;
+
+                System.out.println("Il y a " + NBFOODFOURMIL + " nourritures dans la fourmilliere, il en reste "
+                        + (NBNOURRITURE - NBFOODFOURMIL) + " a trouver dans le monde");
+            }
+
+            move.x = home.x - fourmi.x;
+            move.y = home.y - fourmi.y;
+
+            if(move.x > 0) {
+                move.x = 1;
+            }else if(move.x < 0){
+                move.x = -1;
+            }
+
+            if(move.y > 0) {
+                move.y = 1;
+            }else if(move.y < 0){
+                move.y = -1;
+            }
+
+            fourmi.x += move.x;
+            fourmi.y += move.y;
+
+            this.setPosition(fourmi);
+
+        } else {
+
+            int direction = new Random().nextInt(8);
+
+            Point point = this.getPosition();
+            Point newPoint = new Point(0, 0);
+
+            switch (direction) {
+                case 0:
+                    newPoint.x += 0;
+                    newPoint.y -= 1;
+                    break;
+                case 1:
+                    newPoint.x += 1;
+                    newPoint.y -= 1;
+                    break;
+                case 2:
+                    newPoint.x += 1;
+                    newPoint.y += 0;
+                    break;
+                case 3:
+                    newPoint.x += 1;
+                    newPoint.y += 1;
+                    break;
+                case 4:
+                    newPoint.x += 0;
+                    newPoint.y += 1;
+                    break;
+                case 5:
+                    newPoint.x -= 1;
+                    newPoint.y += 1;
+                    break;
+                case 6:
+                    newPoint.x -= 1;
+                    newPoint.y += 0;
+                    break;
+                case 7:
+                    newPoint.x -= 1;
+                    newPoint.y -= 1;
+                    break;
+            }
 
 
-        Point point = this.getPosition();
-        Point newPoint = new Point(0, 0);
+            point.x += newPoint.x;
+            point.y += newPoint.y;
 
-        switch (direction) {
-            case 0:
-                newPoint.x += 0;
-                newPoint.y -= 1;
-                break;
-            case 1:
-                newPoint.x += 1;
-                newPoint.y -= 1;
-                break;
-            case 2:
-                newPoint.x += 1;
-                newPoint.y += 0;
-                break;
-            case 3:
-                newPoint.x += 1;
-                newPoint.y += 1;
-                break;
-            case 4:
-                newPoint.x += 0;
-                newPoint.y += 1;
-                break;
-            case 5:
-                newPoint.x -= 1;
-                newPoint.y += 1;
-                break;
-            case 6:
-                newPoint.x -= 1;
-                newPoint.y += 0;
-                break;
-            case 7:
-                newPoint.x -= 1;
-                newPoint.y -= 1;
-                break;
-        }
+            if (((point.x > 40 || point.y > 40) && (point.x > 0 && point.y > 0)
+                    && (point.x < LONG - 60 && point.y < HAUT - 60)))
+                this.setPosition(point);
 
-
-        point.x += newPoint.x;
-        point.y += newPoint.y;
-
-        if (
-                ((point.x > 40 || point.y > 40) && (point.x > 0 && point.y > 0 && (point.x < LONG - 25 && point.y < HAUT - 25))))
-            this.setPosition(point);
-        // TODO : Resolve getting out of frame problem. thoughts : None...
 //        System.out.println(point.x + ", "+ point.y);
+        }
     }
 
-    public void isHome(Fourmilliere fourmilliere) {
+    public boolean isHome(Fourmilliere fourmilliere) {
+
         Point home = fourmilliere.getPosition();
         Point fourmi = this.getPosition();
-//        Point distancePoint = new Point();
-//        distancePoint.x = home.x - fourmi.x ;
-//        distancePoint.y = home.y - fourmi.y ;
-        double distance = Math.sqrt(Math.pow((home.x - fourmi.x), 2) + Math.pow((home.y - fourmi.y), 2));
-        if (distance > 30) {
-//            System.out.println("Sortie : " + distance);
-        }
 
+        if(fourmi.x <= home.x && fourmi.y <= home.y)
+            return true;
+
+        return false;
 
     }
 

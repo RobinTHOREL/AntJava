@@ -25,4 +25,10 @@ public class Settings {
     //Positions start
     public static final int X_START = 10;
     public static final int Y_START = 10;
+
+    //Statistic fourmiliere
+    public static int NBFOODFOURMIL = 0;
+
+    //Option debug
+    public static boolean DEBUG = false;
 }

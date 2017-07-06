@@ -52,8 +52,8 @@ public class Model implements Observable {
         for(int i=0;i<NBNOURRITURE;i++)
         {
 
-            Point point = new Point(new Random().nextInt(HAUT - X_START*5)+X_START,
-                    new Random().nextInt(HAUT - X_START*5)+X_START);
+            Point point = new Point(new Random().nextInt((LONG - 35) - X_START*5)+X_START,
+                    new Random().nextInt((HAUT - 35) - Y_START*5)+Y_START);
             Nourriture n = new Nourriture(point);
             n.setNb(1);
             foodList.put(point, n);
@@ -84,7 +84,7 @@ public class Model implements Observable {
     }
     private void move() {
         for (Fourmis fourmis : fourmisList) {
-            fourmis.explore();
+            fourmis.explore(fourmilliere);
             rechercheNourriture(fourmis);
 //            fourmis.isHome(fourmilliere);
 
@@ -97,7 +97,9 @@ public class Model implements Observable {
             Point position = fourmis.getPosition();
             Nourriture nourriture = this.foodList.get(position);
             if (nourriture != null && nourriture.getNb()!= 0) {
-                System.out.println("NOURRITURE RECUPEREE" + nourriture.getPosition().x + " , "+ nourriture.getPosition().y);
+                if(DEBUG)
+                    System.out.println("NOURRITURE RECUPEREE" + nourriture.getPosition().x + " , "+ nourriture.getPosition().y);
+
                 foodList.get(position).setNb(0);
                 foodList.remove(position);
                 fourmis.setGotFood(true);
@@ -120,7 +122,9 @@ public class Model implements Observable {
 
     @Override
     public void notifyObserver() {
-        System.out.println("Notify");
+        if(DEBUG)
+            System.out.println("Notify");
+
         for(Observer observer : listObserver)
         {
             observer.update();

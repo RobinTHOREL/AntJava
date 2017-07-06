@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import static Model.Settings.*;
-import static Model.Settings.LARGEUR_FOURMILLIERE;
 
 
 /**
@@ -45,7 +44,9 @@ public class Monde extends JFrame implements Observer{
         this.repaint();
     }
     public void update(Observable o, Object arg) {
-        System.out.println("update");
+        if(DEBUG)
+            System.out.println("update");
+
         this.repaint();
     }
     public void paint(Model model){
@@ -72,9 +73,10 @@ public class Monde extends JFrame implements Observer{
 
     @Override
     public void update() {
-        System.out.println("update!");
-        repaint();
+        if(DEBUG)
+            System.out.println("update!");
 
+        repaint();
     }
 
 }
