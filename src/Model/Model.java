@@ -25,7 +25,7 @@ public class Model implements Observable {
     private ArrayList<Fourmis> fourmisList;
 //    private ArrayList<Nourriture> foodList;
     private HashMap<Point, Nourriture> foodList;
-//    private HashMap<Point, Pheromone> pheromoneHashMap;
+    private HashMap<Point, Pheromone> pheromoneList;
     private Fourmilliere fourmilliere;
     private Random random;
 

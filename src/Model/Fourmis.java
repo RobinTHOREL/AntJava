@@ -84,8 +84,10 @@ public class Fourmis extends Case {
                 move.y = -1;
             }
 
-            if(random == 1)
+            if(random == 1) {
                 new Pheromone(fourmi.getLocation());
+                //pheromoneList.put
+            }
 
             fourmi.x += move.x;
             fourmi.y += move.y;
