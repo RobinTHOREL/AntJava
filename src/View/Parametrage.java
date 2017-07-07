@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 
+import static Model.Settings.*;
+
 
 /**
  * Created by Kush on 26/05/2017.
@@ -51,18 +53,22 @@ public class Parametrage extends JFrame{
         Panel1.add(fourmis);
         Panel1.add(nbFourmisField);
         nbFourmisField.setPreferredSize(new Dimension(150, 30));
+        nbFourmisField.setText(String.valueOf(NBFOURMIS));
 
         Panel1.add(nourriture);
         Panel1.add(nbNourritureField);
         nbNourritureField.setPreferredSize(new Dimension(150, 30));
+        nbNourritureField.setText(String.valueOf(NBNOURRITURE));
 
         Panel1.add(hauteur);
         Panel1.add(hauteurMonde);
         hauteurMonde.setPreferredSize(new Dimension(150, 30));
+        hauteurMonde.setText(String.valueOf(HAUT));
 
         Panel1.add(largeur);
         Panel1.add(largeurMonde);
         largeurMonde.setPreferredSize(new Dimension(150, 30));
+        largeurMonde.setText(String.valueOf(LONG));
 
 
 
