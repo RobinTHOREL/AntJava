@@ -27,13 +27,16 @@ public class Model implements Observable {
     private HashMap<Point, Nourriture> foodList;
     private HashMap<Point, Pheromone> pheromoneList;
     private Fourmilliere fourmilliere;
+
+
+
     private Random random;
 
     public Model(Controlleur controlleur) {
         this.controlleur = controlleur;
         this.fourmisList = new ArrayList<Fourmis>();
         this.foodList = new HashMap<Point, Nourriture>();
-//        this.pheromoneHashMap = new HashMap<Point, Pheromone>();
+        this.pheromoneList = new HashMap<Point, Pheromone>();
         this.fourmilliere = new Fourmilliere(new Point(10,10));
         this.random = new Random();
 
@@ -78,7 +81,13 @@ public class Model implements Observable {
     public ArrayList<Fourmis> getFourmisList() {
         return fourmisList;
     }
+    public HashMap<Point, Pheromone> getPheromoneList() {
+        return pheromoneList;
+    }
 
+    public void setPheromoneList(HashMap<Point, Pheromone> pheromoneList) {
+        this.pheromoneList = pheromoneList;
+    }
     public void setFourmisList(ArrayList<Fourmis> fourmisList) {
         this.fourmisList = fourmisList;
     }
@@ -86,6 +95,10 @@ public class Model implements Observable {
         for (Fourmis fourmis : fourmisList) {
             fourmis.explore(fourmilliere);
             rechercheNourriture(fourmis);
+            if(fourmis.getGotFood())
+            {
+                this.addPheromones(fourmis.getPosition());
+            }
 //            fourmis.isHome(fourmilliere);
 
         }
@@ -103,9 +116,30 @@ public class Model implements Observable {
                 foodList.get(position).setNb(0);
                 foodList.remove(position);
                 fourmis.setGotFood(true);
+//                addPheromones(position);
 //                setChanged();
                 notifyObserver();
             }
+
+    }
+    public void addPheromones(Point point)
+    {
+        Pheromone pheromone = this.pheromoneList.get(point);
+        if (pheromone == null) {
+            pheromone = new Pheromone(point);
+            this.pheromoneList.put(point, pheromone);
+            this.controlleur.majPh(pheromone);
+            System.out.println(pheromone.getNb());
+//
+        }
+        else{
+            pheromone.addNb();
+            System.out.println(pheromone.getNb());
+        }
+
+
+
+
 
     }
 

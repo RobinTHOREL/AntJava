@@ -20,7 +20,7 @@ public class Settings {
     public static int LARGEUR_FOURMILLIERE = 40;
 
     // Duree de vie d une pheromone
-    public static final int DUREE_VIE_PHERO = 50;
+    public static final int DUREE_VIE_PHERO = 5000;
 
     //Positions start
     public static final int X_START = 10;
@@ -31,4 +31,7 @@ public class Settings {
 
     //Option debug
     public static boolean DEBUG = false;
+
+    // pheromones
+    public static int TEMPSPHEROMONES = 4000;
 }

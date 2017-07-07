@@ -23,7 +23,7 @@ public class Pheromone extends Case{
     public Pheromone (Point position) {
         super(position);
         this.vue = new PheromoneVue(this);
-        this.nb = nb;
+        this.nb = DUREE_VIE_PHERO;
     }
 
     @Override
@@ -40,7 +40,14 @@ public class Pheromone extends Case{
     public void move() {
 
     }
-
+    public void addNb()
+    {
+        this.nb = DUREE_VIE_PHERO;
+    }
+    public void decreaseNb()
+    {
+        this.nb -= 1;
+    }
     public void notifyObserver() {
         System.out.println("observer notified.");
     }

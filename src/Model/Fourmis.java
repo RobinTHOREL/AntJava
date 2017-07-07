@@ -4,14 +4,12 @@ import View.FourmisVue;
 
 import java.awt.*;
 import java.util.Random;
-
 import static Model.Settings.*;
 
 /**
  * Created by Kush on 26/05/2017.
  */
 public class Fourmis extends Case {
-
     private boolean gotFood;
 
     public Fourmis(Point position, boolean gotFood) {
@@ -70,8 +68,6 @@ public class Fourmis extends Case {
             move.x = home.x - fourmi.x;
             move.y = home.y - fourmi.y;
 
-            int random  = 1 + (int)(Math.random() * 6);
-
             if(move.x > 0) {
                 move.x = 1;
             }else if(move.x < 0){
@@ -84,15 +80,15 @@ public class Fourmis extends Case {
                 move.y = -1;
             }
 
-            if(random == 1) {
-                new Pheromone(fourmi.getLocation());
-                //pheromoneList.put
-            }
+
+            //pheromoneList.put
+
 
             fourmi.x += move.x;
             fourmi.y += move.y;
 
             this.setPosition(fourmi);
+
 
         } else {
 

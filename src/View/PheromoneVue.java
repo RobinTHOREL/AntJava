@@ -14,23 +14,19 @@ public class PheromoneVue extends JPanel{
 
         this.setSize(COTE, COTE);
         this.setLocation(pheromone.getPosition());
+
     }
 
     @Override
     protected void paintComponent(Graphics graph) {
-        this.setLocation(pheromone.getPosition());
+        graph.setColor(Color.red);
+        graph.drawOval(10, 10, 8, 8);
 
-
-        if(pheromone.getNb() != 0)
-        {
-            graph.setColor(Color.blue);
-            graph.fillRect(0, 0, COTE, COTE);
-        }
-        else{
-//            System.out.println("PLUS DE FOOD");
-            graph.setColor(Color.white);
-            graph.fillRect(0,0,0,0);
-        }
+//        else{
+////            System.out.println("PLUS DE FOOD");
+//            graph.setColor(Color.white);
+//            graph.fillRect(0,0,0,0);
+//        }
 //        System.out.println("Nourriture");
 
     }

@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.*;
+import Model.Pheromone;
 import View.Monde;
 
 import static Model.Settings.DELAY;
@@ -34,7 +35,9 @@ public class Controlleur {
 
     }
 
-
+    public void majPh(Pheromone pheromone){
+        this.monde.placerPheromone(pheromone);
+    }
 
 }
 

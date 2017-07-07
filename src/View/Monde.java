@@ -4,6 +4,7 @@ import Model.Fourmilliere;
 import Model.Fourmis;
 import Model.Model;
 import Model.Nourriture;
+import Model.Pheromone;
 import com.antjava.observer.*;
 
 import javax.swing.*;
@@ -46,7 +47,6 @@ public class Monde extends JFrame implements Observer{
     public void update(Observable o, Object arg) {
         if(DEBUG)
             System.out.println("update");
-
         this.repaint();
     }
     public void paint(Model model){
@@ -54,23 +54,39 @@ public class Monde extends JFrame implements Observer{
     }
     private void initFourmis(ArrayList<Fourmis> fourmisList) {
         for (Fourmis fourmis : fourmisList) {
-            JPanel vue = fourmis.getVue();
-            this.add(vue);
+            JPanel vueFourmis = fourmis.getVue();
+            this.add(vueFourmis);
         }
     }
     private void initNourriture(HashMap<Point, Nourriture> foodList) {
         for (Point position: foodList.keySet()) {
             Nourriture nourriture = foodList.get(position);
-            JPanel vue = nourriture.getVue();
-            this.add(vue);
+            JPanel vueNourriture = nourriture.getVue();
+            this.add(vueNourriture);
         }
     }
     private void initFourmilliere(Fourmilliere fourmilliere)
     {
-        JPanel vue = fourmilliere.getVue();
-        this.add(vue);
+        JPanel vueFourmilliere = fourmilliere.getVue();
+        this.add(vueFourmilliere);
     }
+    public void placerPheromone(Pheromone pheromone){
+//        JPanel vuePheromone = pheromone.getVue();
+        this.add(pheromone.getVue());
+    }
+    private void creerPheromones(HashMap<Point, Pheromone> pheromoneList)
+    {
 
+            for (Point point: pheromoneList.keySet())
+            {
+                Pheromone pheromone = pheromoneList.get(point);
+                System.out.println(point.x+" "+point.y);
+                JPanel vuePheromones = pheromone.getVue();
+                this.add(vuePheromones);
+            }
+
+
+    }
     @Override
     public void update() {
         if(DEBUG)
